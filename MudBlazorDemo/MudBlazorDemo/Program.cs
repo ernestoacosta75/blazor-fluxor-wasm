@@ -6,6 +6,9 @@ using MudBlazorDemo.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers();
+builder.Services.AddScoped<HttpClient>();
+
 // Add MudBlazor services
 builder.Services.AddMudServices();
 
@@ -16,7 +19,9 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddFluxor(options =>
 {
-    options.ScanAssemblies(typeof(MudBlazorDemo.Client.Features.Counter.Store.CounterFeature).Assembly);
+    options.ScanAssemblies(
+        typeof(MudBlazorDemo.Client.Features.Counter.Store.CounterFeature).Assembly,
+        typeof(MudBlazorDemo.Client.Features.Weather.Store.WeatherFeature).Assembly);
 
 #if DEBUG
     options.UseReduxDevTools(rdt =>
@@ -46,6 +51,7 @@ else
     app.UseHsts();
 }
 
+app.MapControllers();
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();

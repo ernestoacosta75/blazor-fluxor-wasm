@@ -8,6 +8,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\..\MudBlazorDemo.Shared\MudBlazorDemo.Shared.csproj" />
     <ProjectReference Include="..\MudBlazorDemo.Client\MudBlazorDemo.Client.csproj" />
     <PackageReference Include="Fluxor.Blazor.Web" Version="6.1.0" />
     <PackageReference Include="Fluxor.Blazor.Web.ReduxDevTools" Version="6.1.0" />

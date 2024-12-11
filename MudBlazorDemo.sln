@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MudBlazorDemo", "MudBlazorDemo\MudBlazorDemo\MudBlazorDemo.csproj", "{0A2D44E7-4EEA-42AF-B004-4AD629D166A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MudBlazorDemo", "MudBlazorDemo\MudBlazorDemo\MudBlazorDemo.csproj", "{0A2D44E7-4EEA-42AF-B004-4AD629D166A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MudBlazorDemo.Client", "MudBlazorDemo\MudBlazorDemo.Client\MudBlazorDemo.Client.csproj", "{FEE7E43F-82E1-475C-8155-392EC2CAD9BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MudBlazorDemo.Client", "MudBlazorDemo\MudBlazorDemo.Client\MudBlazorDemo.Client.csproj", "{FEE7E43F-82E1-475C-8155-392EC2CAD9BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MudBlazorDemo.Shared", "MudBlazorDemo.Shared\MudBlazorDemo.Shared.csproj", "{5D1AF316-3BCE-4C4F-A694-B1305B3A79D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FEE7E43F-82E1-475C-8155-392EC2CAD9BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEE7E43F-82E1-475C-8155-392EC2CAD9BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEE7E43F-82E1-475C-8155-392EC2CAD9BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D1AF316-3BCE-4C4F-A694-B1305B3A79D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D1AF316-3BCE-4C4F-A694-B1305B3A79D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D1AF316-3BCE-4C4F-A694-B1305B3A79D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D1AF316-3BCE-4C4F-A694-B1305B3A79D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,7 +19,6 @@ namespace MudBlazorDemo.Client.Features.Counter.Store
         // Setting the initial state
         protected override CounterState GetInitialState()
         {
-            Console.WriteLine("CounterFeature initialized with default state.");
             return new CounterState
             {
                 CurrentCount = 0
@@ -32,7 +31,6 @@ namespace MudBlazorDemo.Client.Features.Counter.Store
         [ReducerMethod(typeof(CounterIncrementAction))]
         public static CounterState OnIncrement(CounterState state)
         {
-            Console.WriteLine($"Reducer called. CurrentCount: {state.CurrentCount}");
             return state with
             {
                 CurrentCount = state.CurrentCount + 1,

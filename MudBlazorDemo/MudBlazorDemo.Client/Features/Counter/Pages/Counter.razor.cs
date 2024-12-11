@@ -14,9 +14,7 @@ namespace MudBlazorDemo.Client.Features.Counter.Pages
 
         private void IncrementCount()
         {
-            Console.WriteLine($"Before dispatch: {CounterState.Value.CurrentCount}");
             Dispatcher.Dispatch(new CounterIncrementAction());
-            Console.WriteLine($"After dispatch: {CounterState.Value.CurrentCount}");
         }
     }
 }

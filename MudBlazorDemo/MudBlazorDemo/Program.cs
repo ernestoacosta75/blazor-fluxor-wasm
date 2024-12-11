@@ -2,7 +2,6 @@ using System.Text.Json;
 using Fluxor;
 using Fluxor.Blazor.Web.ReduxDevTools;
 using MudBlazor.Services;
-using MudBlazorDemo.Client.Features.Counter.Store;
 using MudBlazorDemo.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,12 +16,7 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddFluxor(options =>
 {
-    options.ScanAssemblies(
-        //typeof(MudBlazorDemo.Client.Features.Counter.Store.CounterState).Assembly,
-        typeof(MudBlazorDemo.Client.Features.Counter.Store.CounterFeature).Assembly
-        //,typeof(MudBlazorDemo.Client.Features.Counter.Store.CounterReducers).Assembly,
-        //typeof(MudBlazorDemo.Client.Features.Counter.Store.CounterIncrementAction).Assembly
-    );
+    options.ScanAssemblies(typeof(MudBlazorDemo.Client.Features.Counter.Store.CounterFeature).Assembly);
 
 #if DEBUG
     options.UseReduxDevTools(rdt =>

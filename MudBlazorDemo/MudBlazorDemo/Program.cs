@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Blazored.Toast;
 using Fluxor;
 using Fluxor.Blazor.Web.ReduxDevTools;
 using MudBlazor.Services;
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<HttpClient>();
+builder.Services.AddBlazoredToast();
 
 // Add MudBlazor services
 builder.Services.AddMudServices();

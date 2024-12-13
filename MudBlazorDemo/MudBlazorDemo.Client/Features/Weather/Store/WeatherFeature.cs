@@ -9,12 +9,14 @@ namespace MudBlazorDemo.Client.Features.Weather.Store
 
         protected override WeatherState GetInitialState()
         {
-            return new WeatherState
+            var initialState = new WeatherState
             {
                 Initialized = false,
                 Loading = false,
                 Forecasts = Array.Empty<WeatherForecast>()
             };
+
+            return initialState;
         }
     }
 }

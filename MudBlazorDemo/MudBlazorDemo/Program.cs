@@ -29,7 +29,6 @@ builder.Services.AddFluxor(options =>
     options.UseReduxDevTools(rdt =>
     {
         rdt.Name = "MudBlazorDemo";
-        rdt.EnableStackTrace();
         rdt.JsonSerializerOptions = new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,

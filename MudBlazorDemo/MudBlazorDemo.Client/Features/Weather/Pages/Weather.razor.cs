@@ -17,17 +17,18 @@ namespace MudBlazorDemo.Client.Features.Weather.Pages
 
         protected override void OnInitialized()
         {
+            base.OnInitialized();
+
             if (WeatherState.Value.Initialized == false)
             {
                 LoadForecasts();
                 Dispatcher.Dispatch(new WeatherSetInitializedAction());
             }
-
-            base.OnInitialized();
         }
 
         private void LoadForecasts()
         {
+            Console.WriteLine("Dispatcher: " + Dispatcher);
             Dispatcher.Dispatch(new WeatherLoadForecastsAction());
         }
     }

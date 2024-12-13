@@ -6,6 +6,7 @@ using System.Text.Json;
 using MudBlazorDemo.Client.Features.Counter.Store;
 using MudBlazorDemo.Client.Features.Weather.Store;
 using Blazored.Toast;
+using Microsoft.Extensions.Options;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -14,15 +15,13 @@ builder.Services.AddMudServices();
 builder.Services.AddBlazoredToast();
 builder.Services.AddScoped<WeatherEffects>();
 
-builder.Services.AddFluxor(o =>
+builder.Services.AddFluxor(options =>
 {
-    o.ScanAssemblies(typeof(CounterState).Assembly);
-    Console.WriteLine("WASM Scanned Assembly: " + typeof(Program).Assembly.FullName);
+    options.ScanAssemblies(typeof(CounterState).Assembly, typeof(WeatherState).Assembly);
 #if DEBUG
-    o.UseReduxDevTools(rdt =>
+    options.UseReduxDevTools(rdt =>
     {
-        rdt.Name = "MudBlazorDemoClient";
-        rdt.EnableStackTrace();
+        rdt.Name = "MudBlazorDemo";
         rdt.JsonSerializerOptions = new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,

@@ -1,0 +1,52 @@
+﻿@page "/feedback"
+@using System.ComponentModel.DataAnnotations
+@inherits FluxorComponent
+
+<h3>User Feedback</h3>
+
+@if (UserFeedbackState.Value.Submitting)
+{
+    <MudOverlay Visible="true"
+                DarkBackground="true"
+                ZIndex="9999">
+        <MudText Color="Color.Info">Submitting... Please wait.</MudText>
+        <MudProgressCircular Color="Color.Secondary" Indeterminate="true" />
+    </MudOverlay>
+}
+else
+{
+    <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+        <DataAnnotationsValidator />
+        <MudGrid>
+            <MudItem xs="12" sm="7">
+                <MudCard>
+                    <MudCardContent>
+                        <MudTextField Label="Email Address"
+                                      @bind-Value="model.EmailAddress"
+                                      For="@(() => model.EmailAddress)" />
+                        <MudTextField Label="Comment"
+                                      @bind-Value="model.Comment"
+                                      For="@(() => model.Comment)" />
+                        <MudRating @bind-SelectedValue="model.Rating"></MudRating>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+            <MudItem xs="12" sm="5">
+                <MudPaper Class="pa-4 mud-height-full">
+                    <MudText Typo="Typo.subtitle2">Validation Summary</MudText>
+                    @if (UserFeedbackState.Value.Submitted &&
+                         string.IsNullOrWhiteSpace(UserFeedbackState.Value.ErrorMessage))
+                    {
+                        <MudText Color="Color.Success">Thank you for sharing!</MudText>
+                    }
+                    else
+                    {
+                        <MudText Color="@Color.Error">
+                            <ValidationSummary />
+                        </MudText>
+                    }
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </EditForm>
+}

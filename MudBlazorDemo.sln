@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MudBlazorDemo", "MudBlazorD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MudBlazorDemo.Client", "MudBlazorDemo\MudBlazorDemo.Client\MudBlazorDemo.Client.csproj", "{FEE7E43F-82E1-475C-8155-392EC2CAD9BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MudBlazorDemo.Shared", "MudBlazorDemo.Shared\MudBlazorDemo.Shared.csproj", "{5D1AF316-3BCE-4C4F-A694-B1305B3A79D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MudBlazorDemo.Shared", "MudBlazorDemo.Shared\MudBlazorDemo.Shared.csproj", "{5D1AF316-3BCE-4C4F-A694-B1305B3A79D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -21,4 +21,8 @@
     <ProjectReference Include="..\..\MudBlazorDemo.Shared\MudBlazorDemo.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\UserFeedback\Pages\" />
+  </ItemGroup>
+
 </Project>

@@ -21,7 +21,11 @@ namespace MudBlazorDemo.Client.Layout
 
         protected override void OnInitialized()
         {
-            SubscribeToAction<WeatherSetForecastsAction>(ShowWeatherToast);
+            SubscribeToAction<WeatherSetForecastsAction>(action =>
+            {
+                Console.WriteLine("Action triggered! Showing toast...");
+                ShowWeatherToast(action);
+            });
             base.OnInitialized();
         }
 

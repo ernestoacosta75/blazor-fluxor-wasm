@@ -7,12 +7,15 @@ using MudBlazorDemo.Client.Features.Counter.Store;
 using MudBlazorDemo.Client.Features.Weather.Store;
 using Blazored.Toast;
 using MudBlazorDemo.Client.Features.UserFeedback.Store;
+using Blazored.LocalStorage;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["ApiBaseAddress"]) });
 builder.Services.AddMudServices();
 builder.Services.AddBlazoredToast();
+
+builder.Services.AddScoped<CounterEffects>();
 builder.Services.AddScoped<WeatherEffects>();
 builder.Services.AddScoped<UserFeedbackEffects>();
 
@@ -30,6 +33,11 @@ builder.Services.AddFluxor(options =>
         };
     });
 #endif
+});
+
+builder.Services.AddBlazoredLocalStorage(config =>
+{
+    config.JsonSerializerOptions.WriteIndented = true;
 });
 
 await builder.Build().RunAsync();

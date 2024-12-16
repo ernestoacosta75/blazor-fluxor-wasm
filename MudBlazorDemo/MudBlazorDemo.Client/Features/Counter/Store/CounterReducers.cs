@@ -12,5 +12,11 @@ namespace MudBlazorDemo.Client.Features.Counter.Store
                 CurrentCount = state.CurrentCount + 1,
             };
         }
+
+        [ReducerMethod]
+        public static CounterState OnCounterSetState(CounterState state, CounterSetStateAction action)
+        {
+            return action.CounterState;
+        }
     }
 }

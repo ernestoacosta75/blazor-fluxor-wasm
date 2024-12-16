@@ -1,30 +1,45 @@
 ﻿using Fluxor;
-using MudBlazorDemo.Client.Features.Weather.Store;
 using System.Net.Http.Json;
 
 namespace MudBlazorDemo.Client.Features.UserFeedback.Store
 {
     public class UserFeedbackEffects
     {
+        private readonly IState<UserFeedbackState> UserFeedbackState;
         private readonly HttpClient Http;
 
-        public UserFeedbackEffects(HttpClient http)
+        public UserFeedbackEffects(HttpClient http, IState<UserFeedbackState> userFeedbackState)
         {
             Http = http;
+            UserFeedbackState = userFeedbackState;
         }
 
         [EffectMethod]
-        public async Task SubmitUserFeedback(IDispatcher dispatcher, UserFeedbackSubmitAction action) 
+        public async Task SubmitUserFeedback(UserFeedbackSubmitAction action, IDispatcher dispatcher) 
         {
-            var response = await Http.PostAsJsonAsync("Feedback", action.UserFeedbackModel);
-
-            if(response.IsSuccessStatusCode)
+            if (UserFeedbackState.Value == null)
             {
-                dispatcher.Dispatch(new UserFeedbackSubmitSuccessAction());
+                Console.WriteLine("UserFeedbackState is null");
+                return;
             }
-            else
+
+            try
             {
-                dispatcher.Dispatch(new UserFeedbackSubmitFailureAction(response.ReasonPhrase));
+                var response = await Http.PostAsJsonAsync("Feedback/SubmitFeedback", action.UserFeedbackModel);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    dispatcher.Dispatch(new UserFeedbackSubmitSuccessAction());
+                }
+                else
+                {
+                    dispatcher.Dispatch(new UserFeedbackSubmitFailureAction(response.ReasonPhrase));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                dispatcher.Dispatch(new UserFeedbackSubmitFailureAction(ex.Message));
             }
         }
     }

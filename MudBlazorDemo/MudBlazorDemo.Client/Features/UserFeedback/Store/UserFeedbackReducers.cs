@@ -1,5 +1,4 @@
 ﻿using Fluxor;
-using MudBlazorDemo.Client.Features.Weather.Store;
 
 namespace MudBlazorDemo.Client.Features.UserFeedback.Store
 {

@@ -1,5 +1,6 @@
 ﻿using Fluxor;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using MudBlazorDemo.Client.Features.UserFeedback.Store;
 using MudBlazorDemo.Shared.Models;
 
@@ -15,7 +16,7 @@ namespace MudBlazorDemo.Client.Features.UserFeedback.Pages
 
         private UserFeedbackModel model => UserFeedbackState.Value.Model;
 
-        private void OnValidSubmit()
+        private void OnValidSubmit(EditContext context)
         {
             Dispatcher.Dispatch(new UserFeedbackSubmitAction(model));
         }

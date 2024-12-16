@@ -8,6 +8,7 @@ namespace MudBlazorDemo.Controllers
     public class FeedbackController : ControllerBase
     {
         [HttpPost]
+        [Route("SubmitFeedback")]
         public void Post(UserFeedbackModel userFeedbackModel)
         {
             var email = userFeedbackModel.EmailAddress;

@@ -6,18 +6,19 @@ using System.Text.Json;
 using MudBlazorDemo.Client.Features.Counter.Store;
 using MudBlazorDemo.Client.Features.Weather.Store;
 using Blazored.Toast;
-using Microsoft.Extensions.Options;
+using MudBlazorDemo.Client.Features.UserFeedback.Store;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["ApiBaseAddress"]) });
 builder.Services.AddMudServices();
 builder.Services.AddBlazoredToast();
 builder.Services.AddScoped<WeatherEffects>();
+builder.Services.AddScoped<UserFeedbackEffects>();
 
 builder.Services.AddFluxor(options =>
 {
-    options.ScanAssemblies(typeof(CounterState).Assembly, typeof(WeatherState).Assembly);
+    options.ScanAssemblies(typeof(CounterState).Assembly, typeof(WeatherState).Assembly, typeof(UserFeedbackState).Assembly);
 #if DEBUG
     options.UseReduxDevTools(rdt =>
     {

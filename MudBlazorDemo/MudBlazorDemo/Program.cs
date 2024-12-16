@@ -8,7 +8,7 @@ using MudBlazorDemo.Components;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddScoped<HttpClient>();
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["ApiBaseAddress"]) });
 builder.Services.AddBlazoredToast();
 
 // Add MudBlazor services
@@ -23,7 +23,8 @@ builder.Services.AddFluxor(options =>
 {
     options.ScanAssemblies(
         typeof(MudBlazorDemo.Client.Features.Counter.Store.CounterFeature).Assembly,
-        typeof(MudBlazorDemo.Client.Features.Weather.Store.WeatherFeature).Assembly);
+        typeof(MudBlazorDemo.Client.Features.Weather.Store.WeatherFeature).Assembly,
+        typeof(MudBlazorDemo.Client.Features.UserFeedback.Store.UserFeedbackFeature).Assembly);
 
 #if DEBUG
     options.UseReduxDevTools(rdt =>

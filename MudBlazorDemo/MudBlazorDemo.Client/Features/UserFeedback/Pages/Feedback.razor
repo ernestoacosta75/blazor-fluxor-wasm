@@ -29,6 +29,12 @@ else
                                       For="@(() => model.Comment)" />
                         <MudRating @bind-SelectedValue="model.Rating"></MudRating>
                     </MudCardContent>
+                    <MudCardActions>
+                        <MudButton ButtonType="ButtonType.Submit"
+                                   Variant="Variant.Filled"
+                                   Color="Color.Primary"
+                                   Class="ml-auto">Submit</MudButton>
+                    </MudCardActions>
                 </MudCard>
             </MudItem>
             <MudItem xs="12" sm="5">
